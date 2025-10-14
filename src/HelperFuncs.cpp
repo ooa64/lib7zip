@@ -11,6 +11,8 @@
 #include "CPP/Common/StdAfx.h"
 #include "CPP/Windows/Defs.h"
 #include "CPP/7zip/MyVersion.h"
+#else
+#include "CPP/Windows/Defs.h"
 #endif
 
 #include "C/7zVersion.h"
@@ -19,7 +21,7 @@
 #include "CPP/Common/MyCom.h"
 #include "CPP/7zip/ICoder.h"
 #include "CPP/7zip/IPassword.h"
-#include "CPP/7zip/Common/FileStreams.h"
+// #include "CPP/7zip/Common/FileStreams.h"
 
 #include <stdlib.h>
 

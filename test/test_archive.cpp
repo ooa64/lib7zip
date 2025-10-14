@@ -18,7 +18,7 @@ public:
 		m_strFileExt(L"zip")
 	{
 
-		wprintf(L"fileName.c_str(): %s\n", fileName.c_str());
+		printf("fileName.c_str(): %s\n", fileName.c_str());
 		m_pFile = fopen(fileName.c_str(), "rb");
 		if (m_pFile) {
 			fseek(m_pFile, 0, SEEK_END);
@@ -44,7 +44,7 @@ public:
 			wprintf(L"Ext:%ls\n", m_strFileExt.c_str());
 		}
 		else {
-			wprintf(L"fileName.c_str(): %s cant open\n", fileName.c_str());
+			printf("fileName.c_str(): %s cant open\n", fileName.c_str());
 		}
 	}
 
@@ -212,11 +212,7 @@ const wchar_t * index_names[] = {
 		L"kpidIsDir", //(IsDir)
 };
 
-#ifdef _WIN32
-int _tmain(int argc, _TCHAR* argv[])
-#else
 int main(int argc, char * argv[])
-#endif
 {
     if (argc < 2) {
         wprintf(L"Usage: test_archive [archive name]\n");

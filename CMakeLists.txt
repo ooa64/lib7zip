@@ -45,24 +45,27 @@ SET(SEVENZIP_INCLUDE_PATH   "${SEVENZIP_SOURCE_DIR}"
 
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  set(defines -fPIC -std=c++14)
   set(warnings -Wall -Wextra -Werror -Wno-unused-parameter)
   set(cxx_warnings -Wno-class-memaccess)
   set(no_undefined -Wl,--no-undefined)
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+  set(defines -fPIC -std=c++14)
   set(warnings -Wall -Wextra -Werror -Wno-inconsistent-missing-override -Wno-unused-parameter)
   set(cxx_warnings "")
   set(no_undefined -Wl,-undefined,error)
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
-    set(warnings /W4 /WX /EHsc)
-    set(no_undefined "")
-    set(cxx_warnings "")
+  set(defines /DUNICODE /D_UNICODE)
+  set(warnings /W3 /EHsc)
+  set(no_undefined "")
+  set(cxx_warnings "")
 endif()
 
 SET(CXX_STANDARD_REQUIRED OFF)
 SET(CXX_EXTENSION NO)
 
 if (NOT CONFIGURED_ONCE)
-ADD_COMPILE_OPTIONS(-fPIC -std=c++14 ${warnings} ${cxx_warnings})
+ADD_COMPILE_OPTIONS(${defines} ${warnings} ${cxx_warnings})
 ADD_LINK_OPTIONS(${no_undefined})
 endif()
 
