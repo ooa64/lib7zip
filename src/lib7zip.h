@@ -194,6 +194,7 @@ private:
 	C7ZipObjectPtrArray m_InternalObjectsArray;
 
 public:
+	bool Initialize(wstring dll);
 	bool Initialize();
 	void Deinitialize();
 
